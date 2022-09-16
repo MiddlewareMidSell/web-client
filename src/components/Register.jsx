@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 
-const Test = () => {
+const Register = () => {
   
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
-      
-
+      <h1>df</h1>
     </div>
   );
 };
 
-export default Test;
+export default Register;

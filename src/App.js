@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { CreateContainer, Header, MainContainer,Test } from "./components";
+import { CreateContainer, Header, MainContainer, Test } from "./components";
 import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/firebaseFunctions";
 import { actionType } from "./context/reducer";

@@ -21,7 +21,7 @@ import { getAllFoodItems, saveItem } from "../utils/firebaseFunctions";
 import { actionType } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider";
 
-const CreateContainer = () => {
+const CreateIteme = () => {
   const [title, setTitle] = useState("");
   const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
@@ -283,4 +283,4 @@ const CreateContainer = () => {
   );
 };
 
-export default CreateContainer;
+export default CreateIteme;

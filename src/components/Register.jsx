@@ -17,7 +17,7 @@ const Register = () => {
     const register = e =>{
         e.preventDefault()
         console.log(user)
-        axios.post("http://localhost:5000/api/auth/register",user)
+        axios.post("http://localhost:8000/Register",user)
         .then(
             function (response) {
                 console.log(response);

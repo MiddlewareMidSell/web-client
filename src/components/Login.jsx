@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios  from 'axios';
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
 
 
-
-const Login = ({setLoginUser})=> {
+const Login = ()=> {
     const [user,setUser] = useState({
         email:"",
         password: ""
@@ -17,16 +18,30 @@ const Login = ({setLoginUser})=> {
         })
     }
 
-    const login = e =>{
+    // const login = async () => {
+    //     if (!user) {
+    //       const {
+    //         user: { refreshToken, providerData },
+    //       } = await signInWithPopup(firebaseAuth, provider);
+    //       dispatch({
+    //         type: actionType.SET_USER,
+    //         user: providerData[0],
+    //       });
+    //       localStorage.setItem("user", JSON.stringify(providerData[0]));
+    //     } else {
+    //       setIsMenu(!isMenu);
+    //     }
+    //   };
+
+    const login = e => {
         e.preventDefault()
         console.log(user)
-        axios.post("http://localhost:5000/api/auth/register",user)
-        .then(
-            function (response) {
-                console.log(response);
-                alert("User Logged In");
-                setLoginUser(response.data.user)
-              }
+        axios.post("http://localhost:8000/Login",user)
+        .then(function (response) {
+            console.log(response);
+            alert("User Logged In");
+            const token = response.data.token;
+            }
         )
         .catch(
             function (error) {
@@ -53,7 +68,7 @@ const Login = ({setLoginUser})=> {
                 <div className="mb-5">
                     <button type="submit" className="w-full px-3 py-4 bg-blue-500 text-white rounded-lg focus:bg-blue-600 focus:outline-none" onClick={login}>Login</button>
                     <Link to={"/signup"} className="flex items-center gap-2">
-                        <p className="mt-5 text-sm text-center">Don't have an account? <a href="#" className="text-blue-500">Register</a></p>
+                        <p className="mt-5 text-sm text-center">Don't have an account? <a href="" className="text-blue-500">Register</a></p>
                     </Link>
                 </div>
             </form>     

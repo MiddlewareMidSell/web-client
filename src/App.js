@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Header, MainContainer, Register, Login, Product, Payment, CreateIteme, ProductList, OrdersList} from "./components";
 import { useStateValue } from "./context/StateProvider";
@@ -8,9 +8,6 @@ import { actionType } from "./context/reducer";
 
 
 const App = () => {
-  const [user,setLoginUser] = useStateValue({});
-
-
   const [{ foodItems }, dispatch] = useStateValue();
   const fetchData = async () => {
     await getAllFoodItems().then((data) => {
@@ -20,6 +17,7 @@ const App = () => {
       });
     });
   };
+
 
   useEffect(() => {
     fetchData();
@@ -33,16 +31,15 @@ const App = () => {
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
           <Routes>
             <Route path="/signup" element={<Register />} />
-            <Route path="/signin" element={<Login setUser={setLoginUser} />} />
-            <Route path="/*" element={<MainContainer />} />
+            <Route path="/signin" element={<Login />} />
+            <Route path="/" element={<MainContainer />} />
 
             <Route path="product" element={<Product />} />
             <Route path="payment" element={<Payment />} />
 
-            <Route path="/createItem" element={<CreateIteme />} />
-            <Route path="/productList" element={<ProductList />} />
-            <Route path="/ordersList" element={<OrdersList />} />
-
+            <Route path="/createitem" element={<CreateIteme />} />
+            <Route path="/productlist" element={<ProductList />} />
+            <Route path="/orderslist" element={<OrdersList />} />
 
           </Routes>
         </main>

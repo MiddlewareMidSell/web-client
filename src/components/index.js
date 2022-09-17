@@ -13,4 +13,3 @@ export { default as Product} from "./Product";
 export { default as ProductList} from "./ProductList";
 export { default as OrdersList} from "./OrdersList";
 export {default as Payment} from "./Payment";
-export { default as Product} from "./Product";

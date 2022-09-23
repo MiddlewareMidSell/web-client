@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useStateValue } from "../context/StateProvider";
 
 
 const Product = () => {
+
   
   return (
     <div className="flex w-full min-h-screen">
@@ -20,10 +23,18 @@ const Product = () => {
 
             </div>
 
-          <div className="mt-10">
-            <h5 className="text-sm font-bold text-gray-500">Price of One quantity:</h5>
-            <h2 className="mt-2 ml-8 text-xl font-bold text-orange-600"><span>LKR</span> 225.00</h2>
-
+          <div className="flex flex-row justify-between mt-11">
+            <div>
+              <h5 className="text-sm font-bold text-gray-500">Price of One quantity:</h5>
+              <h2 className="mt-2 ml-8 text-xl font-bold text-orange-600"><span>LKR</span> 225.00</h2>
+            </div>
+            <div>
+              <h5 className="text-sm font-bold text-gray-500">Add to cart:</h5>
+              <h2 className="mt-2 ml-8 text-xl font-bold text-orange-600">cart
+                    
+              </h2>
+            </div>
+            
           </div>
             
           </div>

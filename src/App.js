@@ -27,10 +27,10 @@ const App = () => {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <div className="w-screen h-auto flex flex-col bg-primary">
-        <Header />
+      <div className="flex flex-col w-screen h-auto bg-primary">
+        <Header /></div>
 
-        <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
+        <main className="w-full px-4 py-4 mt-14 md:mt-20 md:px-16">
           <Routes>
             <Route path="/signup" element={<Register />} />
             <Route path="/signin" element={<Login setUser={setLoginUser} />} />
@@ -42,11 +42,10 @@ const App = () => {
             <Route path="/createItem" element={<CreateIteme />} />
             <Route path="/productList" element={<ProductList />} />
             <Route path="/ordersList" element={<OrdersList />} />
-
-
+            
           </Routes>
         </main>
-      </div>
+      
     </AnimatePresence>
   );
 };

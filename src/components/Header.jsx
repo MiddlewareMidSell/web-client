@@ -10,7 +10,6 @@ import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
-import { getBytes } from "firebase/storage";
 
 const Header = () => {
   const firebaseAuth = getAuth(app);
@@ -55,7 +54,7 @@ const Header = () => {
       cartShow: !cartShow,
     });
   };
-  console.log(cartItems)  
+
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
       {/* desktop & tablet */}
@@ -81,53 +80,18 @@ const Header = () => {
               <Link to={"/createitem"}className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
                 Add Item
               </Link>
-              <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-                Menu
-              </li>
-              <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-                About Us
-              </li>
-              <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-                Service
-              </li> */}
-            </motion.ul>
 
-            <div className="relative">
-              <motion.img
-                whileTap={{ scale: 0.6 }}
-                src={user ? user.photoURL : Avatar}
-                className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
-                alt="userprofile"
-                onClick={viewmenu}
-              />
-              {isMenu && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.6 }}
-                  className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
-                >                  
-                  <p
-                    className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base"
-                    onClick={logout}
-                  >
-                    Logout <MdLogout />
-                  </p>
-                </motion.div>
-              )}
-            </div>
-          </div>
-        )}
-
-
-
-        {/* For User (have logged in) */}
+              <Link to={"/productlist"}className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+                Products
+              </Link>
 
               <Link to={"/orderslist"}className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
                 Orders
               </Link>
 
             </motion.ul>
+
+            
 
             <div className="relative">
               <motion.img
@@ -162,21 +126,6 @@ const Header = () => {
 
         {false  && (
           <div className="flex items-center gap-8">
-            <motion.ul
-              initial={{ opacity: 0, x: 200 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 200 }}
-              className="flex items-center gap-24 "
-            >
-              <Link to={"/"}className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-                Sign In
-              </Link>
-              <Link to={"/signup"} className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-                Sign Up
-              </Link>
-              
-            </motion.ul>
-
             <div
               className="relative flex items-center justify-center"
               onClick={showCart}
@@ -223,7 +172,7 @@ const Header = () => {
         {/* For user who have not logged in */}
 
 
-        {true  && (
+        {false  && (
           <div className="flex items-center gap-8">
             <motion.ul
               initial={{ opacity: 0, x: 200 }}
@@ -255,11 +204,12 @@ const Header = () => {
             </div>
           </div>
         )}
+
+
+
      </div>
     </header>
   );
 };
 
 export default Header;
-
-

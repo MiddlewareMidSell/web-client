@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Header, MainContainer, Register, Login, Product, Payment, CreateIteme, ProductList, OrdersList} from "./components";
-import { useStateValue } from "./context/StateProvider";
+
 import { getAllFoodItems } from "./utils/firebaseFunctions";
 import { actionType } from "./context/reducer";
+import { useStateValue } from "./context/StateProvider";
+
+
 
 
 const App = () => {
@@ -22,6 +25,9 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const [{ cartShow, cartItems, user }] = useStateValue();
+
 
   return (
     <AnimatePresence exitBeforeEnter>

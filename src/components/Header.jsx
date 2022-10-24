@@ -10,6 +10,7 @@ import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+import { getBytes } from "firebase/storage";
 
 const Header = () => {
   const firebaseAuth = getAuth(app);
@@ -50,7 +51,7 @@ const Header = () => {
       cartShow: !cartShow,
     });
   };
-
+  console.log(cartItems)  
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
       {/* desktop & tablet */}
@@ -289,7 +290,7 @@ const Header = () => {
         {/* For user who have not logged in */}
 
 
-        {false  && (
+        {true  && (
           <div className="flex items-center gap-8">
             <motion.ul
               initial={{ opacity: 0, x: 200 }}
@@ -363,8 +364,8 @@ const Header = () => {
         
         {/* For Login page and reg page */}
 
-
-        {true  && (
+                
+        {false  && (
           <div className="flex items-center gap-8">
             <motion.ul
               initial={{ opacity: 0, x: 200 }}
@@ -372,7 +373,7 @@ const Header = () => {
               exit={{ opacity: 0, x: 200 }}
               className="flex items-center gap-24 "
             >
-              <Link to={"/"}className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              <Link to={"/signin"}className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
                 Sign In
               </Link>
               <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
@@ -388,8 +389,10 @@ const Header = () => {
               <MdShoppingBasket className="text-textColor text-2xl  cursor-pointer" />
               {cartItems && cartItems.length > 0 && (
                 <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-                  
-                </div>
+                <p className="text-xs text-white font-semibold">
+                  {cartItems.length}
+                </p>
+              </div>
               )}
             </div>
 
@@ -522,3 +525,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

@@ -10,6 +10,7 @@ import { firestore } from "../firebase.config";
 
 // Saving new Item
 export const saveItem = async (data) => {
+  console.log(data);
   await setDoc(doc(firestore, "foodItems", `${Date.now()}`), data, {
     merge: true,
   });

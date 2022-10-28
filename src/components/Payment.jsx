@@ -4,9 +4,11 @@ import React, { useState } from "react";
 const Payment = () => {
   
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
+    <div className="flex items-center justify-center w-full min-h-screen">
       
-      <h1 className="text-3xl font-bold mb-5">payment</h1>
+      <h1 className="mb-5 text-3xl font-bold">payment</h1>
+
+      
     </div>
   );
 };
